@@ -62,8 +62,6 @@ pipeline {
                 }
             }
         }
-
-
         stage('Build with dynamic variable') {
             environment {
                 CC = """${sh(
@@ -80,8 +78,16 @@ pipeline {
                 echo "Build with dynamic variable"
                 sh 'printenv'
             }
+        }
+        stage('Use secrets') {
+            environment {
+                AWS_SECRET = credentials('monmotdepassesecret')
+                }
+            steps {
+                echo "secrets"
+                sh 'printenv'
             }
-
+        }
         stage('Test') {
             steps {
                 echo 'Testing..'
