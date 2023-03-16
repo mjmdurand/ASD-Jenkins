@@ -23,7 +23,7 @@ pipeline {
                 }
                 stage('From Dockerfile') {
                     agent {
-                        { dockerfile true }
+                        dockerfile true
                     }
                     steps {
                         sh 'node --version'
