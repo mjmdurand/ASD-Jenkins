@@ -8,8 +8,8 @@ pipeline {
                         docker { image 'node:16.13.1-alpine' }
                     }
                     steps {
-                        sleep 60
                         sh 'node --version'
+                        sleep 60
                     }
                 }
                 stage('Maven version') {
@@ -17,8 +17,8 @@ pipeline {
                         docker { image 'maven:3.9.0-eclipse-temurin-11' }
                     }
                     steps {
-                        sleep 60
                         sh 'mvn --version'
+                        sleep 60
                     }
                 }
             }
