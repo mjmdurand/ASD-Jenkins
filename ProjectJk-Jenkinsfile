@@ -41,6 +41,28 @@ pipeline {
                 }
             }
         }
+
+        stage('Env vars') {
+            /* Parallel */
+            parallel {
+                stage('no vars') {
+                    steps {
+                        echo 'tree without vars..'
+                        sh 'sh tree /tmp'
+                    }
+                }
+                stage('with enw vars') {
+                    environment {
+                        LANG = 'C'
+                    }
+                    steps {
+                        echo 'tree without vars..'
+                        sh 'sh tree /tmp'
+                    }
+                }
+            }
+        }
+
         stage('Test') {
             steps {
                 echo 'Testing..'
