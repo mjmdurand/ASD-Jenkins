@@ -48,7 +48,7 @@ pipeline {
                 stage('no vars') {
                     steps {
                         echo 'tree without vars..'
-                        sh 'sh tree /tmp'
+                        sh 'tree /tmp'
                     }
                 }
                 stage('with enw vars') {
@@ -57,7 +57,7 @@ pipeline {
                     }
                     steps {
                         echo 'tree without vars..'
-                        sh 'sh tree /tmp'
+                        sh 'tree /tmp'
                     }
                 }
             }
