@@ -21,13 +21,26 @@ pipeline {
                         //sleep 15
                     }
                 }
-                stage('From Dockerfile') {
+                stage('From Dockerfile at root') {
                     agent {
                         dockerfile true
                     }
                     steps {
                         sh 'node --version'
                         sh 'svn --version'
+                        //sleep 15
+                    }
+                }
+                stage('From Dockerfile in directory') {
+                    agent {
+                        dockerfile {
+                            filename 'Dockerfile2'
+                            dir 'docker'
+                        }
+                    }
+                    steps {
+                        sh 'nginx -v'
+                        sh 'php -v'
                         //sleep 15
                     }
                 }
