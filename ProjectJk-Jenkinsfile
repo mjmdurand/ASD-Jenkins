@@ -9,14 +9,13 @@ pipeline {
                     steps {
                         echo 'Building..'
                         sh 'make main'
-                        sh 'ls'
-                        archiveArtifacts artifacts: 'main', fingerprint: true
                     }
                 }
                 stage('Strip') {
                     steps {
                         echo 'Stripping..'
                         sh 'strip main'
+                        archiveArtifacts artifacts: 'main', fingerprint: true
                     }
                 }
             }
@@ -28,12 +27,16 @@ pipeline {
                     steps {
                         echo 'Building main2..'
                         sh 'make main2'
+                        sh 'strip main2'
+                        archiveArtifacts artifacts: 'main2', fingerprint: true
                     }
                 }
                 stage('Build main3') {
                     steps {
                         echo 'Building main3..'
                         sh 'make main3'
+                        sh 'strip main3'
+                        archiveArtifacts artifacts: 'main3', fingerprint: true
                     }
                 }
             }
