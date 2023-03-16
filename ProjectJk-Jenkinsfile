@@ -43,8 +43,8 @@ pipeline {
         }
 
         stage('Env vars') {
-            /* Parallel */
-            parallel {
+            /* Sequencialize */
+            stages {
                 stage('no vars') {
                     steps {
                         echo 'tree without vars..'
