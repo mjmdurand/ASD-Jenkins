@@ -43,8 +43,8 @@ pipeline {
         }
 
         stage('Env vars') {
-            /* Sequencialize */
-            stages {
+            /* Parallel */
+            parallel {
                 stage('no vars') {
                     steps {
                         echo 'tree without vars..'
@@ -62,6 +62,25 @@ pipeline {
                 }
             }
         }
+
+
+        stage('Build with dynamic variable') {
+            environment {
+                CC = """${sh(
+                        returnStdout: true,
+                        script: 'echo "clang"'
+                    )}""" 
+                // Using returnStatus
+                EXIT_STATUS = """${sh(
+                        returnStatus: true,
+                        script: 'exit 1'
+                    )}"""
+                }
+            steps {
+                echo "Build with dynamic variable"
+                sh 'printenv'
+            }
+            }
 
         stage('Test') {
             steps {
