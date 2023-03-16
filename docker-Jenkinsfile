@@ -21,7 +21,7 @@ pipeline {
                         sleep 15
                     }
                 }
-                /*stage('From Dockerfile') {
+                stage('From Dockerfile') {
                     agent {
                         dockerfile true
                     }
@@ -30,7 +30,7 @@ pipeline {
                         sh 'svn --version'
                         sleep 15
                     }
-                }*/
+                }
                 
             }
         }
@@ -38,8 +38,9 @@ pipeline {
             stages {
                 stage('Node version') {
                     agent {
-                        docker { image 'node:16.13.1-alpine' }
-                        args '-v /root/.m2:/tmp/m2'
+                        docker { 
+                            image 'node:16.13.1-alpine' 
+                            args '-v /root/.m2:/tmp/m2' }
                     }
                     steps {
                         sh 'node --version'
@@ -49,8 +50,9 @@ pipeline {
                 }
                 stage('Maven version') {
                     agent {
-                        docker { image 'maven:3.9.0-eclipse-temurin-11' }
-                        args '-v /root/.m2:/tmp/m2'
+                        docker { 
+                            image 'maven:3.9.0-eclipse-temurin-11'
+                            args '-v /root/.m2:/tmp/m2' }
                     }
                     steps {
                         sh 'mvn --version'
