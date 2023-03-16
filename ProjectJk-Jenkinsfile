@@ -79,7 +79,7 @@ pipeline {
                 sh 'printenv'
             }
         }
-        stage('Use secrets') {
+        /*stage('Use secrets') {
             environment {
                 AWS_SECRET = credentials('monmotdepassesecret')
                 }
@@ -87,7 +87,7 @@ pipeline {
                 echo "secrets"
                 sh 'printenv'
             }
-        }
+        }*/
         stage('Test') {
             steps {
                 echo 'Testing..'
