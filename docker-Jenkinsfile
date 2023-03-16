@@ -21,7 +21,7 @@ pipeline {
                         sleep 15
                     }
                 }
-                stage('From Dockerfile') {
+                /*stage('From Dockerfile') {
                     agent {
                         dockerfile true
                     }
@@ -30,7 +30,7 @@ pipeline {
                         sh 'svn --version'
                         sleep 15
                     }
-                }
+                }*/
                 
             }
         }
