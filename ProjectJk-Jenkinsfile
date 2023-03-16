@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Build and Strip') {
             stages {
                 stage('Build') {
                     steps {
@@ -12,9 +12,9 @@ pipeline {
                         archiveArtifacts artifacts: 'main', fingerprint: true
                     }
                 }
-                stage('compress') {
+                stage('Strip') {
                     steps {
-                        echo 'Compressing..'
+                        echo 'Stripping..'
                         sh 'strip main'
                     }
                 }
