@@ -2,7 +2,8 @@ pipeline {
     agent any
 
     stages {
-        stage('Build and Strip') {
+        stage('Build and Strip Sequencialize') {
+            /* Sequencialize */
             stages {
                 stage('Build') {
                     steps {
@@ -16,6 +17,23 @@ pipeline {
                     steps {
                         echo 'Stripping..'
                         sh 'strip main'
+                    }
+                }
+            }
+        }
+        stage('Build Parallel') {
+            /* Parallel */
+            parallel {
+                stage('Build main2') {
+                    steps {
+                        echo 'Building main2..'
+                        sh 'make main2'
+                    }
+                }
+                stage('Build main3') {
+                    steps {
+                        echo 'Building main3..'
+                        sh 'make main3'
                     }
                 }
             }
