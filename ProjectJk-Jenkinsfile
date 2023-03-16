@@ -7,6 +7,7 @@ pipeline {
                 echo 'Building..'
                 sh 'make main'
                 sh 'ls'
+                archiveArtifacts artifacts: 'main', fingerprint: true
             }
         }
         stage('Test') {
