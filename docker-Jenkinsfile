@@ -6,19 +6,23 @@ pipeline {
                 stage('Node version') {
                     agent {
                         docker { image 'node:16.13.1-alpine' }
+                        args '-v /root/.m2:/tmp/m2'
                     }
                     steps {
                         sh 'node --version'
-                        sleep 60
+                        sh 'echo bonjour > /tmp/m2/fichier'
+                        //sleep 60
                     }
                 }
                 stage('Maven version') {
                     agent {
                         docker { image 'maven:3.9.0-eclipse-temurin-11' }
+                        args '-v /root/.m2:/tmp/m2'
                     }
                     steps {
                         sh 'mvn --version'
-                        sleep 60
+                        sh 'cat /tmp/m2/fichier'
+                        //sleep 60
                     }
                 }
             }
