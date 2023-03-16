@@ -9,7 +9,7 @@ pipeline {
                     }
                     steps {
                         sh 'node --version'
-                        sleep 15
+                        //sleep 15
                     }
                 }
                 stage('Maven version') {
@@ -18,7 +18,7 @@ pipeline {
                     }
                     steps {
                         sh 'mvn --version'
-                        sleep 15
+                        //sleep 15
                     }
                 }
                 stage('From Dockerfile') {
@@ -28,7 +28,7 @@ pipeline {
                     steps {
                         sh 'node --version'
                         sh 'svn --version'
-                        sleep 15
+                        //sleep 15
                     }
                 }
                 
