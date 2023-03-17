@@ -29,8 +29,9 @@ pipeline {
                 }
                 stage('From Dockerfile at root') {
                     agent {
-                        dockerfile true
+                        dockerfile {
                         label 'extra'
+                        }
                     }
                     steps {
                         sh 'node --version'
